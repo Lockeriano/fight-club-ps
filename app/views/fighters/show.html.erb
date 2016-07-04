@@ -15,5 +15,30 @@
   <%= @fighter.description %>
 </p>
 
+<div class="skills">
+  <h3>Skills</h3>
+  <% unless @fighter.skills.empty? %>
+    <% @fighter.skills.each do |s| %>
+      <p><%= s.name %>: <%= s.level %></p>
+    <% end %>
+  <% end %>
+  <h4>Add skill</h4>
+  <%= form_for([@fighter, @fighter.skills.build]) do |f| %>
+    <p>
+      <%= f.label :skill_name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </p>
+
+    <p>
+      <%= f.label :skill_level %> (0 - 5)
+      <%= f.number_field :level, class: 'form-control' %>
+    </p>
+
+    <p>
+      <%= f.submit "Add skill", class: "btn btn-primary" %>
+    </p>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_fighter_path(@fighter) %> |
 <%= link_to 'Back', fighters_path %>
