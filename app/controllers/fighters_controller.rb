@@ -86,7 +86,7 @@ class FightersController < ApplicationController
 
     # Set skills params whitelist    
     def skill_params
-      params.permit(:name, :user_id)
+      params.permit(:name, :fighter_id)
     end 
 
 end
