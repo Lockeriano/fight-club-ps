@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160704182643) do
+ActiveRecord::Schema.define(version: 20160704200853) do
+
+  create_table "fighter_skills", force: :cascade do |t|
+    t.integer "fighter_id"
+    t.integer "skill_id"
+    t.index ["fighter_id"], name: "index_fighter_skills_on_fighter_id"
+    t.index ["skill_id"], name: "index_fighter_skills_on_skill_id"
+  end
 
   create_table "fighters", force: :cascade do |t|
     t.string   "first_name"

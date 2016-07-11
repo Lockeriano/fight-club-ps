@@ -61,6 +61,18 @@ class FightersController < ApplicationController
     end
   end
 
+  def add_skill_to_user
+    user = User.find(params[:id])
+    user.skills.create(skill_params) #skill name, level...
+    @skills_options = Skill.all.map{|s| [ s.name, s.id] }
+    #whatever happens when this is is done, redirect, json answer etc...
+    if user.skills.update_all(skill_params)
+      flash[:success] = "Skill Added"
+    else
+       render 'add_skill_to_user'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fighter
@@ -71,4 +83,10 @@ class FightersController < ApplicationController
     def fighter_params
       params.require(:fighter).permit(:first_name, :last_name, :description)
     end
+
+    # Set skills params whitelist    
+    def skill_params
+      params.permit(:name, :user_id)
+    end 
+
 end

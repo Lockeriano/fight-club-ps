@@ -1,7 +1,10 @@
-require 'test_helper'
-
 class SkillTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+     @skill.level = 6
+     assert_not @skill.valid?
+  end
+
+	test 'should be unique for given fighter' do
+		puts @fighter.skills.create(name: "Smite", level: 2)
+		assert_not @skill.valid?
+	end
 end

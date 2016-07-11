@@ -26,7 +26,7 @@
   <%= form_for([@fighter, @fighter.skills.build]) do |f| %>
     <p>
       <%= f.label :skill_name %>
-      <%= f.text_field :name, class: 'form-control' %>
+      <%= select_tag :name, options_for_select(Skill.all.collect{|e| [e.name]}, @skills) %>
     </p>
 
     <p>
@@ -35,7 +35,7 @@
     </p>
 
     <p>
-      <%= f.submit "Add skill", class: "btn btn-primary" %>
+      <%= f.submit "Add skill", class: "btn btn" %>
     </p>
   <% end %>
 </div>

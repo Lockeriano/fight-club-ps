@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+strength = Skill.create!([{name: 'strength'}])
+agility = Skill.create!([{name: 'agility'}])
+inteligence = Skill.create!([{name: 'inteligence'}])

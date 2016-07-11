@@ -1,8 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails',        '5.0.0'
+gem 'simple_form', '~> 3.2', '>= 3.2.1'
 gem 'puma',         '3.4.0'
-gem 'sass-rails',   '5.0.5'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'sass-rails', '>= 3.2'
 gem 'uglifier',     '3.0.0'
 gem 'coffee-rails', '4.2.1'
 gem 'jquery-rails', '4.1.1'
