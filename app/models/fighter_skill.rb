@@ -5,7 +5,8 @@ class FighterSkill < ApplicationRecord
   validates :level, presence: true, numericality: { only_integer: true,
                                     greater_than_or_equal_to: 0,
                                     less_than_or_equal_to: 5 }
-  validate :validate_fighter_skill_uniqueness
+
+  delegate :name, to: :skill
 
   private
 
@@ -15,12 +16,6 @@ class FighterSkill < ApplicationRecord
 	  	if skills_quantity >= 9
 		    errors.add(:skills_quantity, "can't be more than 9")
 	   	end
-	  end
-
-	  def validate_fighter_skill_uniqueness
-	    if fighter.skills.where(name: name).present?
-	      self.errors.add(:name, 'there is already skill with given name for given fighter')
-	    end
 	  end
 end
 

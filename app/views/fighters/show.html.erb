@@ -17,20 +17,20 @@
 
 <div class="skills">
   <h3>Skills</h3>
-  <% unless @fighter.skills.empty? %>
-    <% @fighter.skills.each do |s| %>
+  <% unless @fighter.fighter_skills.empty? %>
+    <% @fighter.fighter_skills.each do |s| %>
       <p><%= s.name %>: <%= s.level %></p>
     <% end %>
   <% end %>
   <h4>Add skill</h4>
-  <%= form_for([@fighter, @fighter.skills.build]) do |f| %>
+  <%= form_for([@fighter, @fighter.fighter_skills.build]) do |f| %>
     <p>
-      <%= f.label :skill_name %>
-      <%= select_tag :name, options_for_select(Skill.all.collect{|e| [e.name]}, @skills) %>
+      <%= f.label :name %>
+      <%= f.select :skill_id, options_from_collection_for_select(Skill.all, :id, :name) %>
     </p>
 
     <p>
-      <%= f.label :skill_level %> (0 - 5)
+      <%= f.label :level %> (0 - 5)
       <%= f.number_field :level, class: 'form-control' %>
     </p>
 
