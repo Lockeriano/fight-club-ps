@@ -7,10 +7,11 @@ class FighterSkillsController < ApplicationController
   def create
     @fighter = Fighter.find(params[:fighter_id])
     fighter_skill.assign_attributes(fighter_skill_params)
-    puts fighter_skill.inspect
-    fighter_skill.save
-    puts fighter_skill.errors.inspect
-    redirect_to fighter_path(@fighter)
+    if fighter_skill.save
+      redirect_to fighter_path(@fighter)
+    else
+      render "fighters/show"
+    end
   end
 
   private

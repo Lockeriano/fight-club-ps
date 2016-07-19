@@ -17,13 +17,13 @@
 
 <div class="skills">
   <h3>Skills</h3>
-  <% unless @fighter.fighter_skills.empty? %>
-    <% @fighter.fighter_skills.each do |s| %>
+  <% unless @fighter.fighter_skills.where.not(id: nil).empty? %>
+    <% @fighter.fighter_skills.where.not(id: nil).each do |s| %>
       <p><%= s.name %>: <%= s.level %></p>
     <% end %>
   <% end %>
   <h4>Add skill</h4>
-  <%= form_for([@fighter, @fighter.fighter_skills.build]) do |f| %>
+  <%= form_for([@fighter, @fighter_skill]) do |f| %>
     <p>
       <%= f.label :name %>
       <%= f.select :skill_id, options_from_collection_for_select(Skill.all, :id, :name) %>

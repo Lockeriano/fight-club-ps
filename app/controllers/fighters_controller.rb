@@ -10,6 +10,7 @@ class FightersController < ApplicationController
   # GET /fighters/1
   # GET /fighters/1.json
   def show
+    @fighter_skill = @fighter.fighter_skills.new
   end
 
   # GET /fighters/new
